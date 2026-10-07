@@ -1,24 +1,29 @@
 {
   "name": "@randajan/tether",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A lightweight Node.js process spawner with stream handlers and Python virtual environment support.",
   "type": "module",
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.mjs",
+  "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.cjs"
     },
-    "./handlers/StreamToJson": {
+    "./handle/json": {
+      "types": "./dist/types/handlers/StreamToJson.d.ts",
       "import": "./dist/esm/handlers/StreamToJson.mjs",
       "require": "./dist/cjs/handlers/StreamToJson.cjs"
     },
-    "./handlers/StreamToLines": {
+    "./handle/lines": {
+      "types": "./dist/types/handlers/StreamToLines.d.ts",
       "import": "./dist/esm/handlers/StreamToLines.mjs",
       "require": "./dist/cjs/handlers/StreamToLines.cjs"
     },
-    "./python/PythonSpawner": {
+    "./python": {
+      "types": "./dist/types/python/PythonSpawner.d.ts",
       "import": "./dist/esm/python/PythonSpawner.mjs",
       "require": "./dist/cjs/python/PythonSpawner.cjs"
     },

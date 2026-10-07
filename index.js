@@ -9,6 +9,7 @@ sapp(argv.isBuild, {
             "handlers/StreamToJson.js",
             "handlers/StreamToLines.js",
             "python/PythonSpawner.js"
-        ]
+        ],
+        statics:["types"]
     }
 })
