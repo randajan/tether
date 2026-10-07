@@ -1,6 +1,6 @@
 {
   "name": "@randajan/tether",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight Node.js process spawner with stream handlers and Python virtual environment support.",
   "type": "module",
   "main": "./dist/cjs/index.cjs",
