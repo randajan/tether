@@ -1,0 +1,70 @@
+{
+  "name": "@randajan/tether",
+  "version": "1.0.0",
+  "description": "A lightweight Node.js process spawner with stream handlers and Python virtual environment support.",
+  "type": "module",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
+    },
+    "./handlers/StreamToJson": {
+      "import": "./dist/esm/handlers/StreamToJson.mjs",
+      "require": "./dist/cjs/handlers/StreamToJson.cjs"
+    },
+    "./handlers/StreamToLines": {
+      "import": "./dist/esm/handlers/StreamToLines.mjs",
+      "require": "./dist/cjs/handlers/StreamToLines.cjs"
+    },
+    "./python/PythonSpawner": {
+      "import": "./dist/esm/python/PythonSpawner.mjs",
+      "require": "./dist/cjs/python/PythonSpawner.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "node ./index.js isBuild=true",
+    "prepack": "npm run build"
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=16.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/randajan/tether.git"
+  },
+  "homepage": "https://github.com/randajan/tether#readme",
+  "bugs": {
+    "url": "https://github.com/randajan/tether/issues"
+  },
+  "keywords": [
+    "child-process",
+    "process",
+    "spawn",
+    "stream",
+    "stdout",
+    "stderr",
+    "python",
+    "virtualenv",
+    "nodejs"
+  ],
+  "author": {
+    "name": "Jan Randa",
+    "email": "jnranda@gmail.com",
+    "url": "https://www.linkedin.com/in/randajan/"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@randajan/simple-lib": "^5.0.1"
+  }
+}
