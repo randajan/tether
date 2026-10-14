@@ -1,6 +1,8 @@
 import { ProcessSpawner } from "../common/ProcessSpawner";
 import { resolvePythonPath } from "./paths";
 
+export { resolvePythonPath }
+
 export class PythonSpawner extends ProcessSpawner {
 
     constructor(script, {
