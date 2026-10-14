@@ -48,7 +48,7 @@ await child.start();
 | `@randajan/tether` | `ProcessSpawner` (default and named), `ProcessSpawnError`, `StreamHandler` |
 | `@randajan/tether/handle/lines` | `StreamToLines` |
 | `@randajan/tether/handle/json` | `StreamToJson` |
-| `@randajan/tether/python` | `PythonSpawner` |
+| `@randajan/tether/python` | `PythonSpawner` (default and named), `resolvePythonPath` |
 
 Every import is available through both ESM `import` and CommonJS `require()`.
 
@@ -200,7 +200,7 @@ The first `onData` argument is the parsed value and the second is the original J
 
 ## PythonSpawner
 
-`PythonSpawner` runs a JavaScript string as inline Python source using `python -c`.
+`PythonSpawner` runs a string as inline Python source using `python -c`.
 
 ```js
 import { PythonSpawner } from "@randajan/tether/python";
@@ -231,6 +231,15 @@ When `pythonPath` is omitted, the library walks upward from its compiled module 
 - `.venv/Scripts/python.exe` on Windows.
 
 If no `.venv` is found before reaching the filesystem root, construction throws `ProcessSpawnError`. Extra `args` are appended after the inline script and are available to Python through `sys.argv`.
+
+The same lookup is available independently through `resolvePythonPath(startDir)`, which returns the platform-specific Python executable path for the nearest `.venv`:
+
+```js
+import PythonSpawner, { resolvePythonPath } from "@randajan/tether/python";
+
+const pythonPath = resolvePythonPath(process.cwd());
+const python = new PythonSpawner("print('hello')", { pythonPath });
+```
 
 ```js
 const python = new PythonSpawner("import sys; print(sys.argv[1])", {
@@ -271,6 +280,7 @@ src/
 │   ├── StreamToLines.js         newline framing
 │   └── StreamToJson.js          JSON Lines parsing
 ├── python/
+│   ├── index.js                 Python public exports
 │   ├── paths.js                 upward .venv discovery
 │   └── PythonSpawner.js         python -c wrapper
 └── types/

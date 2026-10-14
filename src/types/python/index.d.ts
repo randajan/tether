@@ -12,3 +12,8 @@ export interface PythonSpawnerOptions extends ProcessSpawnerOptions {
 export class PythonSpawner extends ProcessSpawner {
     constructor(script: string, options?: PythonSpawnerOptions);
 }
+
+/** Finds the nearest project-local .venv and returns its Python executable. */
+export function resolvePythonPath(startDir: string): string;
+
+export default PythonSpawner;

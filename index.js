@@ -8,7 +8,7 @@ sapp(argv.isBuild, {
             "index.js",
             "handlers/StreamToJson.js",
             "handlers/StreamToLines.js",
-            "python/PythonSpawner.js"
+            "python/index.js"
         ],
         statics:["types"]
     }
