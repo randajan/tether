@@ -1,12 +1,12 @@
 import { existsSync } from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
+
 import { ProcessSpawnError } from "../common/ProcessSpawnError";
 
 
-export const resolvePythonPath = () => {
+export const resolvePythonPath = (startDir) => {
 
-    let dir = path.dirname(fileURLToPath(import.meta.url));
+    let dir = startDir;
 
     while (true) {
 

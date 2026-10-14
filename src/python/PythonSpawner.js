@@ -1,7 +1,13 @@
 import { ProcessSpawner } from "../common/ProcessSpawner";
 import { resolvePythonPath } from "./paths";
 
-export { resolvePythonPath }
+import path from "path";
+import { fileURLToPath } from "url";
+
+const resolveDefaultPythonPath = ()=>{
+    const currentDir = path.dirname(fileURLToPath(import.meta.url));
+    return resolvePythonPath(currentDir);
+}
 
 export class PythonSpawner extends ProcessSpawner {
 
@@ -13,7 +19,7 @@ export class PythonSpawner extends ProcessSpawner {
         autoStart,
         autoRestart
     } = {}) {
-        super(pythonPath || resolvePythonPath(), {
+        super(pythonPath || resolveDefaultPythonPath(), {
             handler,
             options,
             args: ["-c", script, ...args],
